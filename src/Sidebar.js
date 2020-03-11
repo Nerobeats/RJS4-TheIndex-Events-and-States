@@ -1,8 +1,8 @@
 import React from "react";
 
-const Sidebar = () => {
+const Sidebar = props => {
   return (
-    <div id="sidebar">
+    <div id="sidebar" onClick={() => props.unselectAuthor()}>
       <img src="theindex.svg" className="logo" alt="the index logo" />
       <section>
         <h4 className="menu-item active">
