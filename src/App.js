@@ -20,7 +20,7 @@ class App extends Component {
   };
   getContentView = () => {
     if (this.state.currentAuthor) {
-      return <AuthorDetail currentAuthor={this.state.currentAuthor} />;
+      return <AuthorDetail author={this.state.currentAuthor} />;
     } else {
       return <AuthorList authors={authors} selectAuthor={this.selectAuthor} />;
     }

@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
+import BookTable from "./BookTable";
 
-function AuthorDetail(props) {
-  let author = props.author;
-
+const AuthorDetail = props => {
+  const author = props.author;
+  const authorName = `${author.first_name} ${author.last_name}`;
+  const tableRows = author.books.map(book => (
+    <BookTable key={book.title} book={book} authorName={authorName} />
+  ));
   return (
     <div className="author col-xs-10">
       <div>
-        <h3>I SHOULD BE AN AUTHOR NAME</h3>
-        <img
-          src="http://catchingfire.ca/wp-content/uploads/2016/09/question-mark-square-01.png"
-          className="img-thumbnail"
-          alt="I SHOULD BE AN AUTHOR NAME TOO"
-        />
+        <h3>{authorName}</h3>
+        <img src={author.imageUrl} className="img-thumbnail" alt={authorName} />
       </div>
       <table className="mt-3 table">
         <thead>
@@ -21,24 +21,9 @@ function AuthorDetail(props) {
             <th>Color</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>I SHOULD BE A BOOK NAME</td>
-            <td>I SHOULD BE THE AUTHOR OF THIS BOOK</td>
-            <td>
-              <button className="btn" style={{ backgroundColor: "blue" }} />
-            </td>
-          </tr>
-          <tr>
-            <td>I SHOULD BE ANOTHER BOOK NAME</td>
-            <td>I SHOULD BE A STRING OF THIS OTHER BOOK'S AUTHORS</td>
-            <td>
-              <button className="btn" style={{ backgroundColor: "red" }} />
-            </td>
-          </tr>
-        </tbody>
+        <tbody>{tableRows}</tbody>
       </table>
     </div>
   );
-}
+};
 export default AuthorDetail;
